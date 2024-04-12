@@ -1,0 +1,83 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    max-width: 500px;
+    width: 100%;
+    padding: 40px;
+    background-color: #34495e;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    color: #ecf0f1;
+}
+h1 {
+    color: #f39c12;
+    text-align: center;
+}
+a {
+    color: #f39c12;
+    text-decoration: none;
+}
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #bdc3c7;
+}
+input[type="text"] {
+    width: calc(100% - 20px); /* Adjusted input width */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+}
+button {
+    padding: 12px 24px;
+    background-color: #f39c12;
+    color: #2c3e50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+}
+button:hover {
+    background-color: #f4b350;
+}
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #bdc3c7;
+}
+
+input[type="checkbox"] {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 20px; /* Adjust size of the custom checkbox */
+    height: 20px; /* Adjust size of the custom checkbox */
+    border: 2px solid #d2d6dc; /* Border color for the checkbox */
+    border-radius: 4px; /* Adjust border radius for a more rounded appearance */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-left: -10px;
+}
