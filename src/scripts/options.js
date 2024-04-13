@@ -2,31 +2,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const saveButton = document.getElementById('save');
 
     chrome.storage.sync.get(['optionSets'], function ({ optionSets }) {
-        optionSets.forEach((optionSet, i) => {
+        optionSets.forEach(({ testUrl, devUrl, checked }, i) => {
             let testUrlInput = document.getElementById(`testUrl${i}`);
             let devUrlInput = document.getElementById(`devUrl${i}`);
             let optionCheckbox = document.getElementById(`option${i}`);
 
-            testUrlInput.value = optionSet.testUrl || '';
-            devUrlInput.value = optionSet.devUrl || '';
-            optionCheckbox.checked = optionSet.checked || false;
+            testUrlInput?.value = testUrl || '';
+            devUrlInput?.value = devUrl || '';
+            optionCheckbox?.checked = checked || false;
         });
     });
 
     saveButton.addEventListener('click', function () {
         const optionSets = [];
+        const inputCount = document.querySelectorAll('input[type="checkbox"]').length;
 
-        // Iterate over each option set
-        for (let i = 0; i < 3; i++) {
-            const testUrlInput = document.getElementById(`testUrl${i}`);
-            const devUrlInput = document.getElementById(`devUrl${i}`);
-            const optionCheckbox = document.getElementById(`option${i}`);
+        for (let i = 0; i < inputCount; i++) {
+            const testUrl = document.getElementById(`testUrl${i}`).value.trim();
+            const devUrl = document.getElementById(`devUrl${i}`).value.trim();
+            const checked = document.getElementById(`checkbox${i}`).checked;
 
-            const testUrl = testUrlInput.value.trim();
-            const devUrl = devUrlInput.value.trim();
-            const checked = optionCheckbox.checked;
-
-            // Add the current option set to the array
             optionSets.push({ testUrl, devUrl, checked });
         }
 
