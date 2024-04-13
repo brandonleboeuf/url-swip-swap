@@ -23,16 +23,16 @@ const updateTabUrl = (currentTab, checkedSets) => {
         chrome.tabs.update({ url: newUrl });
     };
 
-    let isDirty = false;
+    let noMatchesFound = true;
 
     for (const { testUrl, devUrl } of checkedSets) {
         if (currentTab.includes(testUrl) || currentTab.includes(devUrl)) {
-            isDirty = true;
+            noMatchesFound = false;
 
-            const targetUrl = currentTab.includes(testUrl) ? 'test' : 'dev';
+            const isTest = currentTab.includes(testUrl) ;
             const newUrl = currentTab.replace(
-                targetUrl === 'test' ? testUrl : devUrl,
-                targetUrl === 'test' ? devUrl : testUrl
+                isTest ? testUrl : devUrl,
+                isTest ? devUrl : testUrl
             );
 
             swapUrl(newUrl);
@@ -40,7 +40,7 @@ const updateTabUrl = (currentTab, checkedSets) => {
         }
     }
 
-    if (!isDirty) {
+    if (noMatchesFound) {
         alert('ERROR: Not a convertible DK URL.');
     }
 };
