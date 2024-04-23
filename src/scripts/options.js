@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const saveButton = document.getElementById('save');
+    const versionElement = document.getElementById('version');
+
+    // Fetch the manifest.json file
+    fetch(chrome.runtime.getURL('manifest.json'))
+        .then((response) => response.json())
+        .then((data) => {
+            const version = data.version;
+            versionElement.textContent = `Version: ${version}`;
+        })
+        .catch((error) => console.error('Error fetching manifest.json:', error));
 
     chrome.storage.sync.get(['optionSets'], function ({ optionSets }) {
         optionSets?.forEach(({ testUrl, devUrl, checked }, i) => {
@@ -13,7 +22,14 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    saveButton.addEventListener('click', function () {
+    // Listen for changes in input fields
+    document.querySelectorAll('input').forEach((input) => {
+        input.addEventListener('input', function () {
+            saveOptions();
+        });
+    });
+
+    function saveOptions() {
         const optionSets = [];
         const inputCount = document.querySelectorAll('input[type="checkbox"]').length;
 
@@ -25,8 +41,9 @@ document.addEventListener('DOMContentLoaded', function () {
             optionSets.push({ testUrl, devUrl, checked });
         }
 
-        chrome.storage.sync.set({ optionSets }, function () {
-            alert('Settings saved.');
-        });
-    });
+        chrome.storage.sync.set({ optionSets });
+    }
+
+    // Automatically save options when the page loads
+    saveOptions();
 });
