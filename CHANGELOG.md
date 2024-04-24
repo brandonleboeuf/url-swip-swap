@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - Bug that was causing the state to be reset if the options page was visited but no changes were made.
 
+### Changed
+
+- Updated UI to have sliders for checkbox.
+
 ## [url-swip-swap@0.1.3] - 2024-04-22
 
 ### Changed

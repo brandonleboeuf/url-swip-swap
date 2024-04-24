@@ -17,6 +17,7 @@ function renderMessage(message) {
     `;
 }
 
+// Get the current tab URL and the enabled option sets. If it is a valid URL set, swap the URL.
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     const currentTab = tabs[0].url;
     chrome.storage.sync.get(['optionSets'], function ({ optionSets }) {
@@ -40,6 +41,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     });
 });
 
+// Update the current tab URL
 const updateTabUrl = (currentTab, checkedSets) => {
     const swapUrl = (newUrl) => {
         chrome.tabs.update({ url: newUrl }).catch((error) => {

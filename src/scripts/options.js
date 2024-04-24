@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Set version number on Options page
     const versionElement = document.getElementById('version');
-
-    // Fetch the manifest.json file
     fetch(chrome.runtime.getURL('manifest.json'))
         .then((response) => response.json())
         .then((data) => {
@@ -10,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch((error) => console.error('Error fetching manifest.json:', error));
 
+    // Set up input fields with saved values
     chrome.storage.sync.get(['optionSets'], function ({ optionSets }) {
         optionSets?.forEach(({ testUrl, devUrl, checked }, i) => {
             let testUrlInput = document.getElementById(`testUrl${i}`);
@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // Listen for changes in checkboxes and save options on any changes
     function saveOptions() {
         const optionSets = [];
         const inputCount = document.querySelectorAll('input[type="checkbox"]').length;
