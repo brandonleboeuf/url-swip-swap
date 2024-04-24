@@ -43,7 +43,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
         chrome.storage.sync.set({ optionSets });
     }
-
-    // Automatically save options when the page loads
-    saveOptions();
 });
