@@ -73,7 +73,7 @@ button:hover {
 
 /* Hide the default checkbox */
 input[type="checkbox"] {
-    display: none;
+    opacity: 0;
 }
 
 /* Style the custom checkbox */
@@ -94,6 +94,13 @@ input[type="checkbox"] {
     background-color: #5c5f62; /* Background color of the checkbox */
     border-radius: 20px; /* Adjust the border-radius to create a pill shape */
     transition: background-color 0.3s;
+    outline: none; /* Remove default outline */
+}
+
+/* Outline label when checkbox is focused */
+.checkbox-wrapper input[type="checkbox"]:focus-visible + label {
+    outline: 1px solid white; /* Add outline color */
+    border: 1px solid blue; ;
 }
 
 /* Style the slider (the thumb of the checkbox) */
