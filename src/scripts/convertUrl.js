@@ -65,6 +65,6 @@ const updateTabUrl = (currentTab, checkedSets) => {
     }
 
     if (invalidUrl) {
-        renderMessage('ERROR: Not a convertible DK URL.');
+        renderMessage('ERROR: Not a configured URL set.');
     }
 };
