@@ -1,8 +1,17 @@
+/* Define common styles */
+:root {
+    --primary-color: #f39c12;
+    --secondary-color: #2c3e50;
+    --tertiary-color: #34495e;
+    --text-color: #ecf0f1;
+    --label-color: #bdc3c7;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #2c3e50;
+    background-color: var(--secondary-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,26 +23,25 @@ body {
     width: 500px;
     margin: 0 10px;
     padding: 40px;
-    background-color: #34495e;
+    background-color: var(--tertiary-color);
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    color: #ecf0f1;
+    color: var(--text-color);
 }
 
-h1 {
-    color: #f39c12;
+h1, a {
+    color: var(--primary-color);
     text-align: center;
 }
 
 a {
-    color: #f39c12;
     text-decoration: none;
 }
 
 label {
     display: block;
     margin-bottom: 10px;
-    color: #bdc3c7;
+    color: var(--label-color);
 }
 
 input[type="text"] {
@@ -42,14 +50,18 @@ input[type="text"] {
     margin-bottom: 20px;
     border: none;
     border-radius: 5px;
-    background-color: #2c3e50;
-    color: #ecf0f1;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+input[type="text"]:focus {
+    outline: 1px solid var(--primary-color);
 }
 
 button {
     padding: 12px 24px;
-    background-color: #f39c12;
-    color: #2c3e50;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -68,7 +80,7 @@ button:hover {
     margin-top: 20px;
     text-align: center;
     font-size: 12px;
-    color: #bdc3c7;
+    color: var(--label-color);
 }
 
 /* Hide the default checkbox */
@@ -91,7 +103,7 @@ input[type="checkbox"] {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #5c5f62; /* Background color of the checkbox */
+    background-color: var(--secondary-color); /* Background color of the checkbox */
     border-radius: 20px; /* Adjust the border-radius to create a pill shape */
     transition: background-color 0.3s;
     outline: none; /* Remove default outline */
@@ -111,7 +123,7 @@ input[type="checkbox"] {
     left: 9%;
     width: 20px; /* Width of the slider */
     height: 20px; /* Height of the slider */
-    background-color: #fff; /* Color of the slider */
+    background-color: var(--text-color); /* Color of the slider */
     border-radius: 50%; /* Shape the slider as a circle */
     transition: transform 0.3s;
 }
@@ -123,5 +135,6 @@ input[type="checkbox"] {
 
 /* Change background color of the slider when toggled on */
 .checkbox-wrapper input[type="checkbox"]:checked + label {
-    background-color: #f39c12; /* Change background color to blue */
+    background-color: var(--primary-color); /* Change background color to blue */
 }
+
