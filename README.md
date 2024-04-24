@@ -3,8 +3,8 @@
 This is a super simple Chrome extension that converts the current tab's URL from one environment to another while preserving the full URL.
 
 <div style="text-align: center; margin: 15px 0">
-    <img src="src/assets/widget.png" height="300" />
-    <img src="src/assets/options-screen.png" height="300" />
+    <img src="src/assets/options-screen.png" height="250" />
+    <img src="src/assets/widget.png" height="250" />
 </div>
 
 ## Behavior
