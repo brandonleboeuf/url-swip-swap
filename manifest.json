@@ -5,7 +5,7 @@
   "manifest_version": 3,
   "action": {
     "default_popup": "src/index.html",
-    "default_icon": "src/assets/url-swip-swap.png"
+    "default_icon": "src/assets/favicon.png"
   },
   "permissions": ["tabs", "storage"], 
   "options_page": "src/options.html" 
