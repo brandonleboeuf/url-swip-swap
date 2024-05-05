@@ -7,6 +7,6 @@
     "default_popup": "src/index.html",
     "default_icon": "src/assets/url-swip-swap.png"
   },
-  "permissions": ["tabs", "activeTab", "storage"], 
+  "permissions": ["tabs", "storage"], 
   "options_page": "src/options.html" 
 }
