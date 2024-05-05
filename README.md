@@ -1,6 +1,6 @@
 # url-swip-swap Chrome extension
 
-This is a super simple Chrome extension that converts the current tab's URL from one environment to another while preserving the full URL.
+A super simple Chrome extension that allows for effortlessly switching between different URLs while preserving parameters with just a click, perfect for transitioning between testing and development environments or any two specified URLs.
 
 <div style="text-align: center; margin: 15px 0">
     <img src="src/assets/options-screen.png" height="250" />
@@ -17,8 +17,9 @@ This is a super simple Chrome extension that converts the current tab's URL from
   - Messaging will be shown indicating the error thrown by chrome.
 
 ## Usage
-- Right click the extension.
-- Select "Options".
+- Click Options
+  - Right click the extension.
+  - Select "Options".
 - Enter the URLs you want to swap.
 - Click the checkbox to enable each set.
 - Settings are auto-saved.

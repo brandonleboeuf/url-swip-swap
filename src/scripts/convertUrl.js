@@ -1,20 +1,19 @@
 const root = document.getElementById('root');
+const messageEl = document.getElementById('message');
+const titleEl = document.getElementById('title')
 
-function renderMessage(message) {
-    root.innerHTML = `
-        <div class="container">
-            <div class="logo"></div>
-        </div>
-        <h2>url-swip-swap</h2>
-        <p>Swaps between two URLs</p>
-        <p><b>${message}</b></p>
-        <h3>Instructions</h3>
-        <ul>
-            <li>Right-click this Extension.</li>
-            <li>Click "Options".</li>
-            <li>Set the two URLs you want to swap between.</li>
-        </ul>
-    `;
+// Opens options page when the button is clicked
+document.querySelector('#go-to-options').addEventListener('click', function () {
+  if (chrome.runtime.openOptionsPage) {
+    chrome.runtime.openOptionsPage();
+  } else {
+    window.open(chrome.runtime.getURL('options.html'));
+  }
+});
+
+function renderMessage({ title, message }) {
+  title && (titleEl.textContent = title);
+  message && (messageEl.innerHTML = message);
 }
 
 // Get the current tab URL and the enabled option sets. If it is a valid URL set, swap the URL.
@@ -24,8 +23,8 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         const checkedSets = optionSets?.filter(({ checked }) => checked);
 
         if (!checkedSets || checkedSets?.length === 0) {
-            renderMessage('No option sets enabled.');
-            return;
+          renderMessage({ message: 'No option sets enabled.' });
+          return;
         }
 
         const invalidSets = checkedSets.filter(
@@ -33,9 +32,10 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         );
 
         if (invalidSets.length > 0) {
-            renderMessage('Please configure all enabled option sets.');
-            return;
+          renderMessage({ message: 'Please configure all enabled option sets.' });
+          return;
         }
+
 
         updateTabUrl(currentTab, checkedSets);
     });
@@ -45,12 +45,11 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 const updateTabUrl = (currentTab, checkedSets) => {
     const swapUrl = (newUrl) => {
         chrome.tabs.update({ url: newUrl }).catch((error) => {
-            renderMessage(`ERROR: ${error.message}.`);
+          renderMessage({ title: 'Error:', message: `ERROR: ${error.message}.` });
         });
     };
 
     let invalidUrl = true;
-
     for (const { testUrl, devUrl } of checkedSets) {
         if (currentTab.includes(testUrl) || currentTab.includes(devUrl)) {
             invalidUrl = false;
@@ -67,6 +66,8 @@ const updateTabUrl = (currentTab, checkedSets) => {
     }
 
     if (invalidUrl) {
-        renderMessage('ERROR: Not a configured URL set.');
+      renderMessage({ message: 'No configuration set for this URL.' });
+    } else {
+      root.innerHTML = 'Loading...';
     }
 };

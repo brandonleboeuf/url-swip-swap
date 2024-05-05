@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [url-swip-swap@0.1.4] - 2024-05-05
+
+### Changed
+
+- Added button to open Options page from extension.
+- Updated messaging on extension.
+
 ## [url-swip-swap@0.1.4] - 2024-04-24
 
 ### Fixed

@@ -87,3 +87,21 @@ img {
     right: 5%;
     transform: translateY(-50%) rotate(-45deg);
 }
+
+button {
+width: 100%;
+    padding: 13px;
+    cursor: pointer;
+    color: white;
+    background-color: transparent;
+    border-radius: 16px;
+    outline: none;
+    margin: 10px 0;
+    border: 1px solid;
+    transition: all .15s ease-in-out;
+}
+
+button:hover {
+   background-color: white;
+   color: black
+}
