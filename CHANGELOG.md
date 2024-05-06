@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [url-swip-swap@0.1.4] - 2024-05-05
+## [url-swip-swap@1.0.0] - 2024-05-06
 
 ### Changed
 
