@@ -32,3 +32,7 @@ A super simple Chrome extension that allows for effortlessly switching between d
 5. Click "Load unpacked" in the upper left.
 6. Select this entire url-swip-swap dir.
 7. Pin the extension and its ready to use!
+
+## GOTCHYA
+- This must use https when running localhost
+- `HTTPS=true npm start`

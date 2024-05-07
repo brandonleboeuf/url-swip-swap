@@ -44,7 +44,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 // Update the current tab URL
 const updateTabUrl = (currentTab, checkedSets) => {
     const swapUrl = (newUrl) => {
-        chrome.tabs.update({ url: newUrl }).catch((error) => {
+        chrome.tabs.update(null, { url: newUrl }).catch((error) => {
           renderMessage({ title: 'Error:', message: `ERROR: ${error.message}.` });
         });
     };
@@ -60,7 +60,7 @@ const updateTabUrl = (currentTab, checkedSets) => {
 
       // It this is using localhost, use split to completely replace the first part of the url, preserving the remainder of the path and the params
       if (isLocalHost(testUrl) || isLocalHost(devUrl)) {
-        const targetUrl = isTest ? `http://www.${testUrl}` : `http://${devUrl}`;
+        const targetUrl = isTest ? testUrl : devUrl;
         const [_, params] = isTest ? currentTab.split(devUrl) : currentTab.split(testUrl)
         swapUrl(targetUrl + params);
       }
