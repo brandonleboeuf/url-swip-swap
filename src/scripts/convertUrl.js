@@ -49,21 +49,31 @@ const updateTabUrl = (currentTab, checkedSets) => {
         });
     };
 
-    let invalidUrl = true;
-    for (const { testUrl, devUrl } of checkedSets) {
-        if (currentTab.includes(testUrl) || currentTab.includes(devUrl)) {
-            invalidUrl = false;
+  let invalidUrl = true;
 
-            const isTest = currentTab.includes(testUrl);
-            const newUrl = currentTab.replace(
-                isTest ? testUrl : devUrl,
-                isTest ? devUrl : testUrl
-            );
+  for (const { testUrl, devUrl } of checkedSets) {
+    if (currentTab.includes(testUrl) || currentTab.includes(devUrl)) {
+      invalidUrl = false;
 
-            swapUrl(newUrl);
-            break;
-        }
+      const isTest = currentTab.includes(testUrl);
+      const isLocalHost = (url) => url.includes('localhost');
+
+      // It this is using localhost, use split to completely replace the first part of the url, preserving the remainder of the path and the params
+      if (isLocalHost(testUrl) || isLocalHost(devUrl)) {
+        const targetUrl = isTest ? `http://www.${testUrl}` : `http://${devUrl}`;
+        const [_, params] = isTest ? currentTab.split(devUrl) : currentTab.split(testUrl)
+        swapUrl(targetUrl + params);
+      }
+
+      const newUrl = currentTab.replace(
+          isTest ? testUrl : devUrl,
+          isTest ? devUrl : testUrl
+      );
+
+      swapUrl(newUrl);
+      break;
     }
+  }
 
     if (invalidUrl) {
       renderMessage({ message: 'No configuration set for this URL.' });
