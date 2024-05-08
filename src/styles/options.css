@@ -11,12 +11,11 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 20px 0;
     background-color: var(--background-color);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 .container {
@@ -41,7 +40,6 @@ a {
 
 label {
     display: block;
-    margin-bottom: 10px;
     color: var(--label-color);
 }
 
@@ -69,7 +67,7 @@ button {
     transition: background-color 0.3s;
     width: 100%;
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -95,6 +93,7 @@ input[type="checkbox"] {
     display: inline-block;
     width: 40px; /* Adjust the width of the checkbox */
     height: 20px; /* Adjust the height of the checkbox */
+    margin-left: 10px;
 }
 
 .checkbox-wrapper input[type="checkbox"] + label {
@@ -104,7 +103,7 @@ input[type="checkbox"] {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--secondary-color); /* Background color of the checkbox */
+    background-color: var(--background-color); /* Background color of the checkbox */
     border-radius: 20px; /* Adjust the border-radius to create a pill shape */
     transition: background-color 0.3s;
     outline: none; /* Remove default outline */
@@ -120,7 +119,6 @@ input[type="checkbox"] {
 .checkbox-wrapper input[type="checkbox"] + label::before {
     content: '';
     position: absolute;
-    top: -45%;
     left: 9%;
     width: 20px; /* Width of the slider */
     height: 20px; /* Height of the slider */
@@ -139,3 +137,12 @@ input[type="checkbox"] {
     background-color: var(--primary-color); /* Change background color to blue */
 }
 
+.label-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+label:not(.input-wrapper > label) {
+  margin-bottom: 10px;
+}

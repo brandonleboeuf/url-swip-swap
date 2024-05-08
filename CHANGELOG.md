@@ -5,8 +5,11 @@ All notable changes to this project will be documented in this file.
 ## [url-swip-swap@1.0.1] - 2024-05-07
 
 ### Changed
+- UI updated to focus on pivots and sets
 
-- Fixed bog that would not allow swapping between localhost and deployed site due to the missing www
+### Fixed
+- Fixed bog that would not allow swapping between localhost and deployed site due to the missing www.
+-
 
 ## [url-swip-swap@1.0.0] - 2024-05-06
 

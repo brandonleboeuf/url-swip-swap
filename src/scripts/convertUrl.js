@@ -28,7 +28,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         }
 
         const invalidSets = checkedSets.filter(
-            ({ testUrl, devUrl }) => !testUrl || !devUrl
+            ({ topUrl, bottomUrl }) => !topUrl || !bottomUrl
         );
 
         if (invalidSets.length > 0) {
@@ -51,23 +51,23 @@ const updateTabUrl = (currentTab, checkedSets) => {
 
   let invalidUrl = true;
 
-  for (const { testUrl, devUrl } of checkedSets) {
-    if (currentTab.includes(testUrl) || currentTab.includes(devUrl)) {
+  for (const { topUrl, bottomUrl } of checkedSets) {
+    if (currentTab.includes(topUrl) || currentTab.includes(bottomUrl)) {
       invalidUrl = false;
 
-      const isTest = currentTab.includes(testUrl);
+      const isTopUrl = currentTab.includes(topUrl);
       const isLocalHost = (url) => url.includes('localhost');
 
       // It this is using localhost, use split to completely replace the first part of the url, preserving the remainder of the path and the params
-      if (isLocalHost(testUrl) || isLocalHost(devUrl)) {
-        const targetUrl = isTest ? testUrl : devUrl;
-        const [_, params] = isTest ? currentTab.split(devUrl) : currentTab.split(testUrl)
+      if (isLocalHost(topUrl) || isLocalHost(bottomUrl)) {
+        const targetUrl = isTopUrl ? topUrl : bottomUrl;
+        const [_, params] = isTopUrl ? currentTab.split(bottomUrl) : currentTab.split(topUrl)
         swapUrl(targetUrl + params);
       }
 
       const newUrl = currentTab.replace(
-          isTest ? testUrl : devUrl,
-          isTest ? devUrl : testUrl
+          isTopUrl ? topUrl : bottomUrl,
+          isTopUrl ? bottomUrl : topUrl
       );
 
       swapUrl(newUrl);
