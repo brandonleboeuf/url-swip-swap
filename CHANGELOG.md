@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [url-swip-swap@1.1.1] - 2024-05-07
+
+### Fixed
+- Fixed input field focus outline being cut off in the options page
+
 ## [url-swip-swap@1.1.0] - 2024-05-07
 
 ### Added
