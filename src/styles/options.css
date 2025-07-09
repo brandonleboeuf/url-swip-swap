@@ -44,9 +44,9 @@ label {
 }
 
 input[type="text"] {
-    width: calc(100% - 20px); /* Adjusted input width */
+    width: calc(100% - 22px); /* Adjusted to account for outline */
     padding: 10px;
-    margin-bottom: 20px;
+    margin: 0 1px 20px 1px; /* Added horizontal margin to prevent outline clipping */
     border: none;
     border-radius: 5px;
     background-color: var(--secondary-color);
@@ -55,6 +55,7 @@ input[type="text"] {
 
 input[type="text"]:focus {
     outline: 1px solid var(--primary-color);
+    outline-offset: 0;
 }
 
 button {
