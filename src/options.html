@@ -2,48 +2,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Options</title>
+    <title>URL Swip-Swap Options</title>
     <link rel="stylesheet" type="text/css" href="styles/options.css">
     <script src="scripts/options.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>url-swip-swap</h1>
-        <div class="label-wrapper">
-        <h4>SET 1</h4>
-          <div class="input-wrapper checkbox-wrapper">
-              <input type="checkbox" id="checkbox0">
-              <label for="checkbox0"></label>
-          </div>
+        <h1>URL Swip-Swap</h1>
+        <p class="tagline">Quick URL switching between environments</p>
+        <p class="description">Configure URL pairs to quickly switch between different versions of your websites. Toggle the switch to enable/disable each pair.</p>
+        <div id="url-sets">
+            <!-- URL sets will be dynamically inserted here -->
         </div>
-        <label for="topUrl0">PIVOT URL #1:</label>
-        <input type="text" id="topUrl0" placeholder="mywebsite.com">
-        <br>
-        <label for="bottomUrl0">PIVOT URL #2:</label>
-        <input type="text" id="bottomUrl0" placeholder="localhost:3000">
-        <div class="label-wrapper">
-          <h4>SET 2</h4>
-          <div class="input-wrapper checkbox-wrapper">
-              <input type="checkbox" id="checkbox1">
-              <label for="checkbox1"></label>
-          </div>
-        </div>
-        <label for="topUrl1">PIVOT URL #1:</label>
-        <input type="text" id="topUrl1" placeholder="mywebsite.com">
-        <br>
-        <label for="bottomUrl1">PIVOT URL #2:</label>
-        <input type="text" id="bottomUrl1" placeholder="localhost:3000">
-        <div class="label-wrapper">
-          <h4>SET 3</h4>
-          <div class="input-wrapper checkbox-wrapper">
-              <input type="checkbox" id="checkbox2">
-              <label for="checkbox2"></label>
-          </div>
-        </div>
-        <label for="topUrl2">PIVOT URL #1:</label>
-        <input type="text" id="topUrl2" placeholder="mywebsite.com">
-        <label for="bottomUrl2">PIVOT URL #2:</label>
-        <input type="text" id="bottomUrl2" placeholder="localhost:3000">
+        <button id="add-set" class="add-button">Add New URL Pair</button>
         <br><br>
         <div class="footer">
             <div id="version"></div>
