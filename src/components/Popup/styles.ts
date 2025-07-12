@@ -110,4 +110,24 @@ export const OptionsButton = styled.button`
   &:active {
     filter: brightness(90%);
   }
+`;
+
+export const CopyButton = styled.button`
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 14px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #45a049;
+  }
+
+  &:active {
+    background-color: #3d8b40;
+  }
 `; 

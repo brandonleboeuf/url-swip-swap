@@ -93,7 +93,6 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 100%;
   padding: 10px 12px;
-  margin-bottom: 16px;
   background-color: rgba(0, 0, 0, 0.2);
   border: none;
   border-radius: 6px;
@@ -109,6 +108,12 @@ export const Input = styled.input`
   &::placeholder {
     color: ${theme.placeholderColor};
   }
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
 `;
 
 export const Button = styled.button`
@@ -265,6 +270,35 @@ export const RemoveButton = styled.button`
   &:disabled {
     opacity: 0.3;
     pointer-events: none;
+  }
+`;
+
+export const CopyButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  color: white;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
   }
 `;
 

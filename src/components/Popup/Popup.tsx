@@ -9,6 +9,7 @@ import {
   OptionsButton,
   SwappingContainer,
   SwappingText,
+  CopyButton,
 } from './styles';
 
 type Status = 'idle' | 'swapping' | 'error';
@@ -17,6 +18,18 @@ export const Popup: React.FC = () => {
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [targetUrl, setTargetUrl] = useState('');
+  const [copyStatus, setCopyStatus] = useState('Copy URL');
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(targetUrl);
+      setCopyStatus('Copied!');
+      setTimeout(() => setCopyStatus('Copy URL'), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+      setCopyStatus('Failed to copy');
+    }
+  };
 
   useEffect(() => {
     const switchUrl = async () => {
@@ -65,7 +78,7 @@ export const Popup: React.FC = () => {
         setTargetUrl(newUrl);
 
         // Keep swapping state visible for 1 second
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
         // Update the tab
         await chrome.tabs.update(tab.id, { url: newUrl });
@@ -96,6 +109,9 @@ export const Popup: React.FC = () => {
         <Logo />
         <SwappingText>Swapping...</SwappingText>
         <Message>{targetUrl}</Message>
+        <CopyButton onClick={handleCopy}>
+          {copyStatus}
+        </CopyButton>
       </SwappingContainer>
     );
   }
