@@ -15,6 +15,10 @@ A modern Chrome extension built with React 19, TypeScript, and Vite that allows 
 - **Chrome Extension**: Native Chrome extension functionality
 - **URL Swapping**: Seamless switching between configured URLs
 - **Local Storage**: Persistent configuration using Chrome Storage API
+- **Quick Actions**: Copy URLs to clipboard or open in new tabs
+- **Configuration Management**: Import/Export settings for backup or sharing
+- **Smart URL Handling**: Automatic protocol prefixing for URLs
+- **Enhanced UX**: Helpful tooltips and consistent styling
 
 ## 🛠️ Development Setup
 
@@ -130,7 +134,14 @@ Alternative URL: localhost:3000
 
 ## 📝 Changelog
 
-### v1.1.1
+### v2.1.0
+- Added "Open in New Tab" functionality
+- Added Import/Export configuration feature
+- Enhanced tooltips and button styling
+- Improved URL handling and formatting
+- Cleaned up codebase and styling
+
+### v2.0.0
 - Migrated to React 19 + TypeScript + Vite
 - Improved component architecture
 - Added type safety

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getStoredOptions } from '../../utils/chromeStorage';
+import { ChromeStorageService } from '@/services/chromeStorage';
 import {
   PopupContainer,
   Logo,
@@ -9,7 +9,6 @@ import {
   OptionsButton,
   SwappingContainer,
   SwappingText,
-  CopyButton,
 } from './styles';
 
 type Status = 'idle' | 'swapping' | 'error';
@@ -18,18 +17,6 @@ export const Popup: React.FC = () => {
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState('');
   const [targetUrl, setTargetUrl] = useState('');
-  const [copyStatus, setCopyStatus] = useState('Copy URL');
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(targetUrl);
-      setCopyStatus('Copied!');
-      setTimeout(() => setCopyStatus('Copy URL'), 2000);
-    } catch (err) {
-      console.error('Failed to copy:', err);
-      setCopyStatus('Failed to copy');
-    }
-  };
 
   useEffect(() => {
     const switchUrl = async () => {
@@ -43,7 +30,7 @@ export const Popup: React.FC = () => {
         }
 
         // Get stored options
-        const { optionSets } = await getStoredOptions();
+        const optionSets = await ChromeStorageService.getOptionSets();
         if (!optionSets?.length) {
           setStatus('error');
           setErrorMessage('No URL pairs configured');
@@ -109,9 +96,6 @@ export const Popup: React.FC = () => {
         <Logo />
         <SwappingText>Swapping...</SwappingText>
         <Message>{targetUrl}</Message>
-        <CopyButton onClick={handleCopy}>
-          {copyStatus}
-        </CopyButton>
       </SwappingContainer>
     );
   }

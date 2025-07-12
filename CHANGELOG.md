@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [url-swip-swap@2.1.0] - 2024-05-08
+
+### Added
+- "Open in New Tab" button for each URL
+- Import/Export configuration feature
+- Enhanced tooltips for all action buttons
+- Proper URL formatting when opening in new tabs
+- Consistent icon styling across all buttons
+
+### Changed
+- Improved button styling and alignment
+- Enhanced URL handling with proper protocol prefixing
+- Removed redundant CSS files in favor of styled-components
+- Cleaned up unused code and components
+
 ## [url-swip-swap@2.0.0] - 2024-05-07
 
 ### Added

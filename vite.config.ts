@@ -14,11 +14,13 @@ export default defineConfig({
         options: resolve(__dirname, 'options.html'),
       },
       output: {
-        entryFileNames: 'assets/[name].js',
-        chunkFileNames: 'assets/[name].[hash].js',
-        assetFileNames: 'assets/[name].[ext]'
+        entryFileNames: '[name].js',
+        chunkFileNames: '[name].[hash].js',
+        assetFileNames: '[name].[ext]'
       }
     },
+    target: 'esnext',
+    minify: false,
   },
   resolve: {
     alias: {

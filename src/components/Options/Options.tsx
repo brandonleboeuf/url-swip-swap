@@ -8,6 +8,8 @@ import {
   Description,
   UrlPairsContainer,
   AddPairButton,
+  ImportExportContainer,
+  ImportExportButton
 } from './styles';
 
 interface UrlPairData {
@@ -116,6 +118,57 @@ export const Options: React.FC = () => {
     });
   }, [saveOptions]);
 
+  const handleExport = useCallback(() => {
+    const data = JSON.stringify(urlPairs, null, 2);
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `url-swip-swap-config-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, [urlPairs]);
+
+  const handleImport = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const importedPairs = JSON.parse(e.target?.result as string);
+        // Validate the imported data
+        if (!Array.isArray(importedPairs)) throw new Error('Invalid format');
+        
+        const validPairs = importedPairs.filter(pair => 
+          pair && typeof pair === 'object' && 
+          typeof pair.topUrl === 'string' && 
+          typeof pair.bottomUrl === 'string' &&
+          typeof pair.checked === 'boolean'
+        );
+
+        if (validPairs.length === 0) throw new Error('No valid URL pairs found');
+
+        // Add IDs to imported pairs if they don't have them
+        const pairsWithIds = validPairs.map((pair: UrlPairData) => ({
+          ...pair,
+          id: pair.id || crypto.randomUUID(),
+        }));
+
+        setUrlPairs(pairsWithIds);
+        saveOptions(pairsWithIds);
+      } catch (error) {
+        console.error('Error importing configuration:', error);
+        alert('Error importing configuration. Please check the file format.');
+      }
+    };
+    reader.readAsText(file);
+    // Reset the input so the same file can be imported again
+    event.target.value = '';
+  }, [saveOptions]);
+
   return (
     <Container>
       <Title>url-swip-swap</Title>
@@ -144,6 +197,22 @@ export const Options: React.FC = () => {
       <AddPairButton id="add-pair" onClick={handleAddPair}>
         Add New URL Pair
       </AddPairButton>
+
+      <ImportExportContainer>
+        <ImportExportButton as="label" htmlFor="import-config">
+          Import Configuration
+          <input
+            type="file"
+            id="import-config"
+            accept=".json"
+            onChange={handleImport}
+            style={{ display: 'none' }}
+          />
+        </ImportExportButton>
+        <ImportExportButton onClick={handleExport}>
+          Export Configuration
+        </ImportExportButton>
+      </ImportExportContainer>
 
       <Footer version={version} />
     </Container>

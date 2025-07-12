@@ -92,28 +92,71 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   width: 100%;
-  padding: 10px 12px;
-  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
+  background-color: ${theme.inputBackground};
   color: ${theme.textColor};
   font-size: 14px;
-  transition: all 0.2s ease;
-
-  &:focus {
-    outline: none;
-    background-color: rgba(0, 0, 0, 0.3);
-  }
 
   &::placeholder {
     color: ${theme.placeholderColor};
+  }
+
+  &:focus {
+    outline: 1px solid ${theme.primaryColor};
+    outline-offset: 0;
   }
 `;
 
 export const InputWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  width: 100%;
+  margin-bottom: 20px;
+
+  ${Input} {
+    flex: 1;
+    margin-bottom: 0;
+  }
+`;
+
+export const CopyButton = styled.button`
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: ${theme.labelColor};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+
+  &:hover {
+    color: ${theme.primaryColor};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    
+    &:hover {
+      color: ${theme.labelColor};
+    }
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  ${InputWrapper} & {
+    margin-left: 4px;
+  }
+`;
+
+export const OpenInNewTabButton = styled(CopyButton)`
+  padding-left: 4px;
 `;
 
 export const Button = styled.button`
@@ -273,37 +316,39 @@ export const RemoveButton = styled.button`
   }
 `;
 
-export const CopyButton = styled.button`
-  background: none;
-  border: none;
-  padding: 0;
+export const AddPairButton = styled(Button)`
+  margin-top: 16px;
+`;
+
+export const ImportExportContainer = styled.div`
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+`;
+
+export const ImportExportButton = styled(Button)`
+  flex: 1;
+  background-color: transparent;
+  border: 1px solid ${theme.primaryColor};
+  color: ${theme.primaryColor};
   cursor: pointer;
-  margin-left: 8px;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.6;
-  transition: opacity 0.2s;
-  color: white;
+  text-align: center;
 
   &:hover {
-    opacity: 1;
+    background-color: ${theme.primaryColor};
+    color: ${theme.backgroundColor};
   }
 
-  &:disabled {
-    opacity: 0.2;
-    cursor: not-allowed;
+  /* Ensure label behaves like a button */
+  &[for="import-config"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
-  svg {
-    width: 16px;
-    height: 16px;
-    fill: currentColor;
-  }
-`;
-
-export const AddPairButton = styled(Button)`
-  margin-top: 16px;
 `;
 
 interface FooterProps {
