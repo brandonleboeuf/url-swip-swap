@@ -16,6 +16,7 @@ type Status = 'idle' | 'swapping' | 'error';
 export const Popup: React.FC = () => {
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [targetUrl, setTargetUrl] = useState('');
 
   useEffect(() => {
     const switchUrl = async () => {
@@ -59,14 +60,15 @@ export const Popup: React.FC = () => {
           return;
         }
 
-        // Show swapping state
+        // Show swapping state and set target URL
         setStatus('swapping');
+        setTargetUrl(newUrl);
+
+        // Keep swapping state visible for 1 second
+        await new Promise(resolve => setTimeout(resolve, 1500));
 
         // Update the tab
         await chrome.tabs.update(tab.id, { url: newUrl });
-
-        // Keep swapping state visible for 1 second
-        await new Promise(resolve => setTimeout(resolve, 1000));
 
         // Close popup
         window.close();
@@ -93,6 +95,7 @@ export const Popup: React.FC = () => {
       <SwappingContainer>
         <Logo />
         <SwappingText>Swapping...</SwappingText>
+        <Message>{targetUrl}</Message>
       </SwappingContainer>
     );
   }
