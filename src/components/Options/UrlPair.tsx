@@ -87,13 +87,13 @@ export const UrlPair: React.FC<Props> = ({
       </LabelWrapper>
 
       {!isRemoveDisabled && (
-        <RemoveButton 
-          onClick={handleRemove} 
+      <RemoveButton 
+        onClick={handleRemove} 
           disabled={isRemoving}
           title="Remove this URL pair"
-        >
-          Remove
-        </RemoveButton>
+      >
+        Remove
+      </RemoveButton>
       )}
 
       <Label>Primary URL:</Label>

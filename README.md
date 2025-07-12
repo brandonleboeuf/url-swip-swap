@@ -48,6 +48,24 @@ npm run build:extension
 4. Click "Load unpacked" and select the `dist` folder
 5. Pin the extension to your toolbar
 
+### Publishing to Chrome Web Store
+1. Run the build command to create a production-ready version:
+   ```bash
+   npm run build:extension
+   ```
+2. Compress the `dist` folder into a ZIP file:
+   - On macOS/Linux: `cd dist && zip -r ../extension.zip ./*`
+   - On Windows: Right-click the `dist` folder and select "Compress to ZIP"
+3. Navigate to the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole)
+4. Click "Upload New Package" and select your ZIP file
+5. Fill in/update the required store listing information:
+   - Description
+   - Screenshots
+   - Privacy policy
+   - Promotional tiles
+6. Submit for review
+7. Once approved, your update will be available to users
+
 ## 📁 Project Structure
 
 ```

@@ -6,6 +6,8 @@ export const PopupContainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  min-width: 400px;
+  min-height: 300px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: ${theme.colors.text};
 `;
@@ -15,15 +17,13 @@ export const SwappingContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  min-width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
+  min-height: 300px;
+  min-width: 400px;
   background: ${theme.colors.background};
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: ${theme.colors.text};
   gap: 2rem;
+  padding: 20px;
 `;
 
 export const Logo = styled.div`
