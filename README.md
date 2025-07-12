@@ -36,13 +36,10 @@ npm run dev
 
 # Build for production
 npm run build
-
-# Build extension (includes asset copying)
-npm run build:extension
 ```
 
 ### Loading the Extension
-1. Run `npm run build:extension`
+1. Run `npm run build`
 2. Navigate to [chrome://extensions/](chrome://extensions/)
 3. Enable "Developer mode" (top right toggle)
 4. Click "Load unpacked" and select the `dist` folder

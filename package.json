@@ -5,9 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "build:extension": "npm run build && npm run copy-assets",
-    "copy-assets": "cp manifest.json dist/ && mkdir -p dist/assets && cp src/assets/* dist/assets/ && cp popup.html options.html dist/",
+    "build": "tsc && vite build && npm run copy-manifest",
+    "copy-manifest": "cp manifest.json dist/",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
