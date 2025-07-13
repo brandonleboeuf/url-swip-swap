@@ -42,9 +42,9 @@ const slideOut = keyframes`
 
 export const Container = styled.div`
   max-width: 100%;
-  width: 500px;
-  margin: 0 auto;
-  padding: 32px;
+  width: 600px;
+  margin: 0 10px;
+  padding: 40px;
   background-color: ${theme.tertiaryColor};
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
