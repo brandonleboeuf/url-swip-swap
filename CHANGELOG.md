@@ -2,9 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## [url-swip-swap@2.1.0] - 2024-05-08
+## [url-swip-swap@2.0.0] - 2024-05-08
 
 ### Added
+- Complete migration to React + TypeScript + Vite
+- Modern component architecture with styled-components
+- Improved state management and type safety
+- Enhanced build system with Vite
+- Better developer experience with TypeScript
 - "Open in New Tab" button for each URL
 - Import/Export configuration feature
 - Enhanced tooltips for all action buttons
@@ -16,15 +21,6 @@ All notable changes to this project will be documented in this file.
 - Enhanced URL handling with proper protocol prefixing
 - Removed redundant CSS files in favor of styled-components
 - Cleaned up unused code and components
-
-## [url-swip-swap@2.0.0] - 2024-05-07
-
-### Added
-- Complete migration to React + TypeScript + Vite
-- Modern component architecture with styled-components
-- Improved state management and type safety
-- Enhanced build system with Vite
-- Better developer experience with TypeScript
 
 ### Fixed
 - Fixed URL swapping when URLs are entered without protocols (http:// or https://)
