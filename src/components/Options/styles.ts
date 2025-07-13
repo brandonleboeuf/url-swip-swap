@@ -1,16 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
-
-export const theme = {
-  primaryColor: '#f39c12',
-  secondaryColor: '#2c3e50',
-  backgroundColor: '#1d1d1de6',
-  tertiaryColor: '#34495e',
-  textColor: '#ecf0f1',
-  labelColor: '#bdc3c7',
-  inputBackground: '#2c3e50',
-  borderColor: '#34495e',
-  placeholderColor: '#95a5a6'
-};
+import { theme } from '../shared/styles';
 
 const fadeIn = keyframes`
   from {
@@ -49,33 +38,6 @@ export const Container = styled.div`
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   color: ${theme.textColor};
-`;
-
-export const Title = styled.h1`
-  color: ${theme.primaryColor};
-  text-align: center;
-  margin: 0 0 8px;
-  font-size: 28px;
-  font-weight: 600;
-  text-transform: none;
-`;
-
-export const Tagline = styled.div`
-  color: ${theme.primaryColor};
-  text-align: center;
-  margin: 0 0 24px;
-  font-size: 14px;
-  font-style: italic;
-  opacity: 0.9;
-`;
-
-export const Description = styled.div`
-  color: ${theme.textColor};
-  text-align: center;
-  margin-bottom: 32px;
-  line-height: 1.5;
-  font-size: 14px;
-  opacity: 0.9;
 `;
 
 export const UrlPairsContainer = styled.div`
@@ -187,7 +149,7 @@ export const UrlPairWrapper = styled.div<{ isRemoving?: boolean }>`
   max-height: 300px;
   transition: all 0.2s ease;
   overflow: hidden;
-  padding: 24px;
+  padding: 24px 0;
   margin-bottom: 16px;
   background: transparent;
   border-radius: 0;
@@ -248,42 +210,27 @@ export const CheckboxWrapper = styled.div`
     bottom: 0;
     background-color: ${theme.backgroundColor};
     border-radius: 24px;
-    transition: all 0.3s ease;
-    outline: none;
+    transition: 0.4s;
 
     &:before {
-      content: '';
       position: absolute;
-      left: 2px;
-      top: 2px;
-      width: 20px;
-      height: 20px;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      bottom: 4px;
       background-color: ${theme.textColor};
       border-radius: 50%;
-      transition: transform 0.3s ease;
+      transition: 0.4s;
     }
   }
 
-  input[type="checkbox"]:checked + label {
+  input:checked + label {
     background-color: ${theme.primaryColor};
-
-    &:before {
-      transform: translateX(20px);
-    }
   }
 
-  input[type="checkbox"]:disabled + label {
-    opacity: 0.5;
-    cursor: not-allowed;
-    
-    &:before {
-      background-color: ${theme.textColor};
-      opacity: 0.5;
-    }
-  }
-
-  input[type="checkbox"]:disabled:checked + label {
-    background-color: ${theme.backgroundColor};
+  input:checked + label:before {
+    transform: translateX(20px);
   }
 `;
 

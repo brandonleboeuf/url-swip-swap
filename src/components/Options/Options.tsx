@@ -3,14 +3,16 @@ import { UrlPair } from './UrlPair';
 import { Footer } from './Footer';
 import {
   Container,
-  Title,
-  Tagline,
-  Description,
   UrlPairsContainer,
   AddPairButton,
   ImportExportContainer,
   ImportExportButton
 } from './styles';
+import {
+  Title,
+  Tagline,
+  Description,
+} from '../shared/styles';
 
 interface UrlPairData {
   id: string;

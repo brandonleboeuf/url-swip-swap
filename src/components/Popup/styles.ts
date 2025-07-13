@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '@/styles/theme';
+import { theme } from '../shared/styles';
 
 export const PopupContainer = styled.div`
   display: flex;
@@ -9,7 +9,10 @@ export const PopupContainer = styled.div`
   min-width: 400px;
   min-height: 300px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: ${theme.colors.text};
+  color: ${theme.textColor};
+  background-color: ${theme.tertiaryColor};
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 `;
 
 export const SwappingContainer = styled.div`
@@ -19,51 +22,20 @@ export const SwappingContainer = styled.div`
   justify-content: center;
   min-height: 300px;
   min-width: 400px;
-  background: ${theme.colors.background};
+  background-color: ${theme.tertiaryColor};
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: ${theme.colors.text};
+  color: ${theme.textColor};
   gap: 2rem;
   padding: 20px;
-`;
-
-export const Logo = styled.div`
-  width: 48px;
-  height: 48px;
-  background: url('assets/favicon.png') no-repeat center;
-  background-size: contain;
-  margin: 0 auto 16px;
-
-  ${SwappingContainer} & {
-    width: 64px;
-    height: 64px;
-    margin: 0;
-  }
-`;
-
-export const Title = styled.h2`
-  text-align: center;
-  margin: 0 0 16px;
-  color: ${theme.colors.primary};
-  font-size: 18px;
-  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 `;
 
 export const SwappingText = styled.div`
   font-size: 18px;
-  color: ${theme.colors.primary};
+  color: ${theme.primaryColor};
   text-align: center;
   font-weight: 500;
-`;
-
-export const Message = styled.div`
-  margin: 16px 0;
-  padding: 12px;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  border-left: 4px solid ${theme.colors.primary};
-  text-align: left;
-  color: ${theme.colors.text};
-  width: 100%;
 `;
 
 export const Instructions = styled.div`
@@ -72,18 +44,18 @@ export const Instructions = styled.div`
   
   h3 {
     margin: 0 0 8px;
-    color: ${theme.colors.primary};
+    color: ${theme.primaryColor};
     font-size: 14px;
     font-weight: 600;
   }
-  
+
   ul {
     margin: 0;
     padding-left: 20px;
-    color: ${theme.colors.text};
+    color: ${theme.textColor};
     font-size: 13px;
     line-height: 1.4;
-    
+
     li {
       margin-bottom: 4px;
     }
@@ -93,22 +65,22 @@ export const Instructions = styled.div`
 export const OptionsButton = styled.button`
   width: 100%;
   padding: 12px;
-  background: ${theme.colors.primary};
-  color: ${theme.colors.background};
+  background-color: ${theme.primaryColor};
+  color: ${theme.backgroundColor};
   border: none;
   border-radius: 6px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
   margin-top: auto;
   
   &:hover {
-    filter: brightness(110%);
+    background-color: #f4b350;
   }
 
   &:active {
-    filter: brightness(90%);
+    transform: translateY(1px);
   }
 `;
 
