@@ -149,7 +149,7 @@ export const UrlPairWrapper = styled.div<{ isRemoving?: boolean }>`
   max-height: 300px;
   transition: all 0.2s ease;
   overflow: hidden;
-  padding: 24px 0;
+  padding: 24px 12px;
   margin-bottom: 16px;
   background: transparent;
   border-radius: 0;

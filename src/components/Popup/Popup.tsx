@@ -34,14 +34,15 @@ export const Popup: React.FC = () => {
 
         // Get stored options
         const optionSets = await ChromeStorageService.getOptionSets();
-        if (!optionSets?.length) {
+        const configuredSets = optionSets.filter(set => set.topUrl.trim() && set.bottomUrl.trim());
+        if (!configuredSets.length) {
           setStatus('error');
           setErrorMessage('No URL pairs have been set up yet. Click Options below to get started!');
           return;
         }
 
         // Find matching URL set
-        const matchingSet = optionSets.find(set => {
+        const matchingSet = configuredSets.find(set => {
           if (!set.checked) return false;
           return tab.url!.includes(set.topUrl) || tab.url!.includes(set.bottomUrl);
         });
